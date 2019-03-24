@@ -1,0 +1,7 @@
+[package]
+name = "mod_test"
+version = "0.0.1"
+authors = ["Dmitri G."]
+edition = "2018"
+
+[dependencies]

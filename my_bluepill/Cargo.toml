@@ -1,0 +1,35 @@
+[package]
+authors = ["Dmitri G."]
+edition = "2018"
+readme = "README.md"
+name = "my_bluepill"
+version = "0.1.0"
+
+[dependencies]
+# Provides startup code for the ARM CPU
+cortex-m-rt = "0.6.7"
+# Provides access to low level ARM CPU registers (used for delay)
+# cortex-m = "0.5.8"
+# Provies a panic-handler (halting cpu)
+# (required when not using stdlib)
+panic-halt = "0.2.0"
+# panic-semihosting = "0.5.1"
+# cortex-m-semihosting = "0.3.2"
+
+[dependencies.stm32f1]
+version = "0.6.0"
+features = ["stm32f103", "rt"] # Gives us access to the STM32F1 registers
+
+# Other way to declare stm32f1
+# stm32f1 = {version = "0.6.0", features = ["stm32f103", "rt"]}
+
+# This lets you use `cargo fix`!
+[[bin]]
+name = "my_bluepill"
+test = false
+bench = false
+
+[profile.release]
+opt-level = "s"  # Optimize for size ('z' would optimize even more)
+lto = true       # Link with link time optimization (lto).
+debug = true     # Enable debugging in release mode.
